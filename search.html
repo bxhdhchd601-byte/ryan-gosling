@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск по ОРТ | ProfiKG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+   <style>
+        :root {
+            --brand-turquoise: #1abc9c;
+            --brand-yellow: #ffcc00;
+            --dark-graphite: #0f1217; 
+            --card-graphite: #181c25; 
+            --border-mono: rgba(255, 255, 255, 0.05);
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            background-color: var(--dark-graphite);
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        .navbar {
+            background: rgba(15, 18, 23, 0.9) !important;
+            border-bottom: 1px solid var(--border-mono);
+            padding: 15px 0;
+        }
+        .logo span { color: var(--brand-turquoise); }
+        .nav-links a { color: var(--text-dim); text-decoration: none; }
+        .nav-links a.active { color: var(--brand-turquoise) !important; font-weight: bold; }
+
+        .search-container-box {
+            background: var(--card-graphite);
+            border: 1px solid var(--border-mono);
+            border-radius: 24px;
+            padding: 40px; /* Немного уменьшили внутренний отступ блока */
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* КНОПКИ: теперь размер 10px 15px как в universities.html */
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-mono);
+            color: var(--text-dim);
+            padding: 10px 15px; /* Уменьшили до стандарта каталога */
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.95rem; /* Чуть меньше шрифт */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--brand-turquoise);
+            color: white;
+        }
+
+        .tab-btn.active {
+            background: var(--brand-turquoise) !important;
+            color: var(--dark-graphite) !important;
+            font-weight: bold;
+            border-color: var(--brand-turquoise);
+        }
+
+        input#userScore {
+            background: #0b0e14;
+            border: 1px solid var(--border-mono);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            width: 180px;
+            outline: none;
+            text-align: center;
+        }
+
+        .btn-search {
+            background: var(--brand-turquoise);
+            color: var(--dark-graphite);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        #schoolsContainer > div {
+            background: #ffffff !important;
+            border-radius: 20px !important;
+            padding: 30px !important;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
+            display: flex;
+            flex-direction: column;
+            min-height: 250px;
+            color: #1a1a1a !important;
+        }
+
+        #schoolsContainer > div::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 8px;
+            background: var(--brand-yellow);
+        }
+
+        #schoolsContainer h3 { color: #000 !important; font-weight: 800; margin-top: 10px; }
+        #schoolsContainer p { color: #333 !important; }
+
+        @media (max-width: 992px) { .results-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { .results-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <a href="index.html" class="logo" style="text-decoration: none; color: white; font-weight: 800; font-size: 1.5rem;">PROFI<span>KG</span></a>
+            <ul class="nav-links" style="display: flex; gap: 20px; list-style: none;">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="search.html" class="active">Поиск ВУЗа</a></li>
+                <li><a href="universities.html">Все заведения</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container  py-50" style="max-width: 1200px; margin: 50px auto; padding: 0 20px;">
+        <div class="search-container-box">
+            <h2 style="font-size: 2.2rem; margin-bottom: 30px; color: white;">Поиск ВУЗа</h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+                <!-- Тип -->
+                <div style="display: flex; gap: 12px;">
+                    <button class="tab-btn active" onclick="window.filterCatalog('all', event)">Все</button>
+                    <button class="tab-btn" onclick="window.filterCatalog('vuz', event)">ВУЗы</button>
+                    <button class="tab-btn" onclick="window.filterCatalog('college', event)">Колледжи</button>
+                    <button class="tab-btn" onclick="window.filterCatalog('vocational_school', event)">Проф.Лицей</button>
+                </div>
+
+                <!-- 15 Сфер + Все -->
+              <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+    <!-- Все -->
+    <!-- Панель категорий -->
+<!-- Панель категорий -->
+<button class="tab-btn active" onclick="window.filterByCategory('all', event)">
+    <i class="fas fa-th-large"></i> Все
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('it', event)">
+    <i class="fas fa-code"></i> IT
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('medicine', event)">
+    <i class="fas fa-user-md"></i> Медицина
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('law', event)">
+    <i class="fas fa-balance-scale"></i> Юристы
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('jurisprudence', event)">
+    <i class="fas fa-gavel"></i> Юриспруденция
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('economy', event)">
+    <i class="fas fa-wallet"></i> Экономика
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('management', event)">
+    <i class="fas fa-briefcase"></i> Менеджмент
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('tech', event)">
+    <i class="fas fa-microchip"></i> Техника
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('energy', event)">
+    <i class="fas fa-bolt"></i> Энергетика
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('construction', event)">
+    <i class="fas fa-hard-hat"></i> Стройка
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('pedagogy', event)">
+    <i class="fas fa-graduation-cap"></i> Учителя
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('humanities', event)">
+    <i class="fas fa-book-open"></i> Гуманитарные
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('art', event)">
+    <i class="fas fa-palette"></i> Искусство
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('agriculture', event)">
+    <i class="fas fa-tractor"></i> Сельское хоз.
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('services', event)">
+    <i class="fas fa-concierge-bell"></i> Сервис
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('science', event)">
+    <i class="fas fa-flask"></i> Наука
+</button>
+
+<button class="tab-btn" onclick="window.filterByCategory('transport', event)">
+    <i class="fas fa-truck"></i> Транспорт
+</button>
+</div>
+
+                <div style="margin-top: 30px; display: flex; gap: 15px; align-items: center;">
+                    <input type="number" id="userScore" placeholder="Твой балл ОРТ">
+                    <button class="btn-search" onclick="window.filterSchools()">Найти</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="schoolsContainer" class="results-grid"></div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                   
+</html> <a href="index.html" class="footer-logo">PROFI<span>KG</span></a>
+                    <p class="footer-tagline">Ищи профессию осознанно. Сравнивай направления, проходные баллы и выбирай будущее уверенно.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Популярное</h4>
+                    <a class="footer-chip" href="search.html">Поиск профессий</a>
+                    <a class="footer-chip" href="universities.html">Топ направлений</a>
+                    <a class="footer-chip" href="index.html">ОРТ 2026</a>
+                </div>
+             
+                <div>
+                    <h4 class="footer-title">Сообщество</h4>
+                    <p class="footer-cta-text">Подпишись на Telegram-канал: новые профессии, советы по ОРТ и полезные подборки.</p>
+                    <a href="#" class="footer-telegram"><i class="fab fa-telegram-plane"></i> Наш Telegram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2026 ProfiKG. Все права защищены.</div>
+        </div>
+    </footer>
+
+    <script src="javascript.js"></script>
+</body>
+
+</html>

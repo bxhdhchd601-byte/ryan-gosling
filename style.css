@@ -1,0 +1,728 @@
+/* ОБНУЛЕНИЕ */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+}
+
+body { 
+    background: #f4f7f6; 
+    color: #333; 
+    line-height: 1.6;
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+/* НАВИГАЦИЯ */
+.navbar { 
+    background: #fff; 
+    padding: 1rem 0; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+}
+
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo { 
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    color: #2c3e50; 
+    text-decoration: none;
+}
+
+.logo span { color: #00a8a8; }
+
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 25px; 
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: #555; 
+    font-weight: 600; 
+    transition: 0.3s; 
+}
+
+.nav-links a:hover, .nav-links a.active { color: #00a8a8; }
+
+/* HERO БЛОК */
+.hero { 
+    height: 60vh; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1505751172107-16053f3e6205?auto=format&fit=crop&w=1600&q=80'); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    color: white; 
+}
+
+.hero-content h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+
+/* КНОПКИ */
+.btn-primary, .btn-outline {
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary { background: #00a8a8; color: white; box-shadow: 0 4px 15px rgba(0,168,168,0.3); }
+.btn-primary:hover { background: #008f8f; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,168,168,0.4); }
+
+.btn-outline { 
+    background: transparent; 
+    color: white; 
+    border: 2px solid white; 
+    margin-left: 10px;
+}
+.btn-outline:hover { background: white; color: #2c3e50; }
+
+/* СЕТКА РЕЗУЛЬТАТОВ */
+.results-grid { 
+    display: grid; 
+    /* repeat(auto-fill...) — это магия. Она сама решает, 
+       сколько карточек влезет в ряд. 300px — это их идеальная ширина. */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 25px; 
+    padding: 40px 0; 
+    align-items: start; /* Чтобы карточки не растягивались до пола */
+}
+
+/* ЖИРНАЯ КАРТОЧКА */
+/* УЛЬТИМАТИВНАЯ КАРТОЧКА: БЕЛАЯ, ПРЫГУЧАЯ, НЕ ТАНК */
+.feature-card { 
+    background: #ffffff !important; /* Принудительно белый фон, чтобы не была прозрачной */
+    border-radius: 18px; 
+    padding: 25px; 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.07); 
+    border-top: 8px solid #00a8a8; 
+    display: flex; 
+    flex-direction: column; 
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    /* ИМБА ПРЫЖОК */
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; 
+}
+
+/* Эффект при наведении */
+.feature-card:hover { 
+    transform: translateY(-15px) scale(1.05) !important; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    background: #ffffff !important;
+}
+
+.feature-card.special { 
+    border-top-color: #f1c40f; 
+    background: linear-gradient(to bottom, #fffef5, #ffffff); 
+}
+
+/* ВЕРХ КАРТОЧКИ */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.badge { 
+    font-size: 10px; 
+    padding: 5px 12px; 
+    border-radius: 6px; 
+    font-weight: 800; 
+    color: white; 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.badge.vuz { background: #2c3e50; }
+.badge.college { background: #00a8a8; }
+
+.feature-card i { font-size: 2.2rem; color: #00a8a8; transition: 0.3s; }
+.feature-card:hover i { transform: scale(1.1); }
+
+/* ТЕЛО КАРТОЧКИ - ЗАБИРАЕТ СВОБОДНОЕ МЕСТО */
+.card-body {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-card h3 { 
+    font-size: 1.3rem; 
+    color: #2c3e50; 
+    margin-bottom: 8px; 
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.univ-name { 
+    color: #888; 
+    font-size: 0.95rem; 
+    margin-bottom: 20px; 
+    font-weight: 500;
+}
+
+/* БЛОК ХАРАКТЕРИСТИК */
+.stats { 
+    background: #f8fafb; 
+    padding: 15px; 
+    border-radius: 12px; 
+    margin-top: auto; /* Прижимает блок характеристик к нижней части */
+    border: 1px solid #eee;
+}
+.stat-item { 
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 0.9rem; 
+    margin-bottom: 8px; 
+}
+.stat-item:last-child { margin-bottom: 0; }
+.stat-item strong { color: #2c3e50; font-weight: 700; }
+
+/* ФУТЕР С ЦЕНОЙ */
+.card-footer {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd;
+    text-align: center;
+}
+
+.price { 
+    font-size: 1.4rem; 
+    font-weight: 900; 
+    color: #00a8a8; 
+}
+
+/* ПОИСКОВАЯ ЗОНА */
+.search-box { 
+    text-align: center; 
+    background: white; 
+    padding: 50px 40px; 
+    border-radius: 20px; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+    margin-top: -80px; 
+    position: relative; 
+    z-index: 10; 
+    border-bottom: 4px solid #00a8a8;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.search-box input { 
+    padding: 18px 25px; 
+    border: 2px solid #edf2f7; 
+    border-radius: 12px; 
+    width: 300px; 
+    outline: none; 
+    font-size: 1rem;
+    transition: 0.3s;
+    background: #f8fafb;
+}
+
+.search-box input:focus { 
+    border-color: #00a8a8; 
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0,168,168,0.1);
+}
+
+/* ТАБЫ */
+.tabs { display: flex; justify-content: center; gap: 12px; margin: 40px 0; }
+.tab-btn { 
+    padding: 12px 25px; 
+    border: 2px solid #00a8a8; 
+    background: white; 
+    color: #00a8a8; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-weight: 700; 
+    transition: 0.3s;
+}
+.tab-btn.active, .tab-btn:hover { background: #00a8a8; color: white; box-shadow: 0 4px 15px rgba(0,168,168,0.2); }
+
+/* СЕКЦИИ */
+.section-title { text-align: center; margin-bottom: 50px; font-size: 2.2rem; color: #2c3e50; font-weight: 800; }
+.bg-light-gray { background: #eef2f3; }
+.py-50 { padding: 80px 0; }
+
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.info-card { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+.info-card i { font-size: 3rem; color: #00a8a8; margin-bottom: 20px; }
+
+.prof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.prof-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.prof-card img { width: 100%; height: 220px; object-fit: cover; }
+.prof-content { padding: 25px; }
+
+.footer { background: #2c3e50; color: white; padding: 50px 0; text-align: center; margin-top: 80px; }
+
+/* МОБИЛКА */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .search-box { padding: 30px 20px; margin-top: -40px; }
+    .search-box input { width: 100%; }
+}
+/* Стиль кнопки карты */
+.map-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #eef2f7;
+    color: #2c3e50;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.map-btn i {
+    color: #e74c3c; /* Красный цвет маркера Google */
+}
+
+.map-btn:hover {
+    background: #27ae60;
+    color: white;
+}
+
+.map-btn:hover i {
+    color: white;
+}
+/* Кнопка "Найти на карте" */
+.map-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    background: #fff;
+    color: #2c3e50;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.map-btn:hover {
+    border-color: #e74c3c;
+    background: #fdf2f2;
+}
+
+/* Модальное окно (фон) */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8); /* Темный фон */
+    backdrop-filter: blur(5px); /* Размытие заднего плана */
+}
+/* Контент окна */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 15px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Крестик закрытия */
+.close-modal {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    color: #333;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Анимация появления */
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.catalog-grid {
+    display: grid;
+    /* minmax(300px, 1fr) — значит карточка не меньше 300px, но и не растянется в танк */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 25px; /* Расстояние между ними */
+    padding: 20px;
+    align-items: start; /* Чтобы они не тянулись до пола, если текста мало */
+}
+/* 1. Создаем саму пружину */
+@keyframes modalJump {
+    0% { opacity: 0; transform: scale(0.5) translateY(150px); }
+    70% { transform: scale(1.08) translateY(-15px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* 2. Вешаем её на окно */
+.modal-content {
+    /* Другие стили окна... */
+    animation: modalJump 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+:root {
+    --brand-turquoise: #1abc9c; /* Основной бирюзовый */
+    --dark-turquoise: #16a085;  /* Бирюзовый потемнее для ховера */
+    --bg-light: #f4f9f9;
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Общий контейнер для кнопок */
+.filter-tabs-wrapper, .tabs-tags {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Кнопки на обеих страницах */
+.tab-btn, .univ-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    border: 2px solid #e0e7e7;
+    background: #ffffff;
+    color: #34495e;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* Наведение (Ховер) */
+.tab-btn:hover, .univ-tab-btn:hover {
+    border-color: var(--brand-turquoise);
+    color: var(--brand-turquoise);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(26, 188, 156, 0.15);
+}
+
+/* Активная кнопка (Бирюзовый фон) */
+.tab-btn.active, .univ-tab-btn.active {
+    background: var(--brand-turquoise);
+    border-color: var(--brand-turquoise);
+    color: #ffffff !important;
+    transform: scale(1.06);
+    box-shadow: 0 12px 25px rgba(26, 188, 156, 0.3);
+}
+
+/* Иконки: делаем их одинаковыми по размеру */
+.tab-btn i, .univ-tab-btn i {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+/* ФИНАЛЬНЫЙ ФИКС ЦВЕТОВ (ГРАФИТ + БИРЮЗА) */
+
+/* 1. ФОН СТРАНИЦЫ И ОБЩИЙ ТЕКСТ */
+body {
+    background-color: #0f1217 !important;
+    color: #e2e8f0 !important;
+}
+
+/* 2. ТЕКСТ ВНУТРИ БЕЛЫХ КАРТОЧЕК (РЕЗУЛЬТАТЫ) */
+/* Мы заставляем текст внутри карточек быть темным, чтобы его было видно на белом фоне */
+.results-grid div, 
+#all-list div, 
+.uni-card {
+    color: #1a1a1a !important; /* Делаем текст почти черным */
+}
+
+/* Названия вузов внутри карточек */
+.results-grid h3, 
+#all-list h3, 
+.uni-card h3 {
+    color: #000000 !important;
+    font-weight: 800 !important;
+}
+
+/* Подписи (сколько лет учиться, факультеты) */
+.results-grid p, 
+#all-list p, 
+.uni-card p {
+    color: #444444 !important;
+}
+
+/* 3. КНОПКИ ФИЛЬТРОВ И НАДПИСИ (ВЕРХНЯЯ ПАНЕЛЬ) */
+/* Делаем заголовки фильтров белыми */
+.filter-group label, 
+.filter-container p, 
+h2.section-title {
+    color: #ffffff !important;
+}
+
+/* Кнопки ВУЗ/Колледж */
+.tab-btn {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #94a3b8 !important; /* Светло-серый текст */
+}
+
+/* Активная кнопка - Бирюзовая */
+.tab-btn.active {
+    background-color: #1abc9c !important;
+    color: #0f1217 !important; /* Черный текст на бирюзе для четкости */
+    border-color: #1abc9c !important;
+    font-weight: bold !important;
+}
+
+/* Иконки в фильтрах */
+.tab-btn i {
+    color: inherit !important; /* Иконка принимает цвет текста кнопки */
+}
+/* Возвращаем сочную сетку по 3 в ряд */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Строго 3 колонки */
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* Адаптивность: на планшетах 2, на телефонах 1 */
+@media (max-width: 992px) {
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .results-grid { grid-template-columns: 1fr; }
+}
+
+/* Те самые красочные карточки */
+.results-grid > div {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 30px !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px; /* Чтобы не были мелкими */
+}
+
+/* Та самая яркая полоска (как в universities) */
+.results-grid > div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: #ffcc00; /* Тот самый желтый акцент, или поставь #1abc9c для бирюзы */
+}
+
+/* Текст внутри — четкий и черный */
+.results-grid h3 {
+    color: #000000 !important;
+    font-size: 1.4rem;
+    margin: 10px 0;
+    font-weight: 800;
+}
+
+.results-grid p {
+    color: #333333 !important; /* Насыщенный цвет для инфы об обучении */
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Чтобы кнопки сфер (IT, Медицина) тоже не ломались */
+.tab-btn {
+    white-space: nowrap; /* Чтобы текст в кнопках не переносился криво */
+}
+.answer-box {
+    /* Добавляет 100px отступа сверху при прыжке к ID */
+    scroll-margin-top: 100px; 
+}
+/* Базовый стиль для всех меток */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.badge.vocational_school { background-color: #F59E0B; }   
+
+/* ЕДИНЫЙ ФУТЕР САЙТА */
+.site-footer {
+    margin-top: 80px;
+    background: #11161d;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 20px 28px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 24px;
+}
+
+.footer-logo {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.footer-logo span {
+    color: #1abc9c;
+}
+
+.footer-tagline {
+    margin: 0;
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 280px;
+}
+
+.footer-title {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer-links a:hover {
+    color: #1abc9c;
+    transform: translateX(2px);
+}
+
+.footer-chip {
+    display: inline-block;
+    margin: 0 8px 8px 0;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(26, 188, 156, 0.12);
+    border: 1px solid rgba(26, 188, 156, 0.35);
+    color: #7be3cf;
+    font-size: 0.84rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.footer-chip:hover {
+    background: rgba(26, 188, 156, 0.2);
+    color: #a8f2e5;
+}
+
+.footer-cta-text {
+    margin: 0 0 14px;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.footer-telegram {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #1abc9c;
+    color: #0f1217;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.footer-telegram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(26, 188, 156, 0.35);
+}
+
+.footer-bottom {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    color: #64748b;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-inner {
+        padding: 36px 16px 24px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
