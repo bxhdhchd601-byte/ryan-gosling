@@ -589,6 +589,33 @@ function normalizeText(value) {
     return (value || '').toString().toLowerCase().trim();
 }
 
+window.setupRevealAnimations = function() {
+    var targets = document.querySelectorAll('.info-card, .prof-card, .section-title, .answer-box, .search-container-box, .filter-section, .site-footer, .feature-card');
+    targets.forEach(function(el) {
+        el.classList.add('reveal-on-scroll');
+    });
+
+    if (!('IntersectionObserver' in window)) {
+        targets.forEach(function(el) {
+            el.classList.add('is-visible');
+        });
+        return;
+    }
+
+    var observer = new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    targets.forEach(function(el) {
+        observer.observe(el);
+    });
+};
+
 /* 3. УНИВЕРСАЛЬНЫЙ РЕНДЕР */
 window.renderList = function() {
     var searchContainer = document.getElementById('schoolsContainer');
@@ -623,6 +650,8 @@ window.renderList = function() {
     targetContainer.innerHTML = filtered.length
         ? filtered.map(createCard).join('')
         : '<p style="grid-column: 1/-1; text-align: center; padding: 50px;">Ничего не найдено. Попробуйте изменить фильтры.</p>';
+
+    window.setupRevealAnimations();
 };
 
 /* 4. ФУНКЦИИ КНОПОК */
@@ -693,5 +722,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('all-list')) {
         window.renderList();
     }
+
+    window.setupRevealAnimations();
 });
 

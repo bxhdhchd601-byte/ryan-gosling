@@ -200,9 +200,25 @@
                     <h4 class="footer-title">Популярное</h4>
                     <a class="footer-chip" href="professions.html">Поиск профессий</a>
                     <a class="footer-chip" href="universities.html">Топ направлений</a>
-                    <a class="footer-chip" href="footer.html">ОРТ 2026</a> 
+                    <a class="footer-chip" href="search.html">Калькулятор ОРТ</a>
                 </div>
-            
+                <div>
+                    <h4 class="footer-title">Частые вопросы ОРТ</h4>
+                    <div class="footer-faq-list">
+                        <details class="footer-faq-item">
+                            <summary>Какой минимальный балл ОРТ?</summary>
+                            <p>Ориентир по базовому порогу обычно от 110, но по вузам требования отличаются.</p>
+                        </details>
+                        <details class="footer-faq-item">
+                            <summary>Куда поступить с моим баллом?</summary>
+                            <p>Открой Калькулятор ОРТ и введи балл — увидишь подходящие направления.</p>
+                        </details>
+                        <details class="footer-faq-item">
+                            <summary>Где смотреть дедлайны?</summary>
+                            <p>Проверяй раздел ОРТ 2026 и обязательно уточняй даты в приемной комиссии.</p>
+                        </details>
+                    </div>
+                </div>
                 <div>
                     <h4 class="footer-title">Сообщество</h4>
                     <p class="footer-cta-text">Подпишись на Telegram-канал: новые профессии, советы по ОРТ и полезные подборки.</p>
@@ -214,6 +230,27 @@
     </footer>
 
     <script>
+        function setupIndexAnimations() {
+            const targets = document.querySelectorAll('.info-card, .prof-card, .section-title, .answer-box, .site-footer');
+            targets.forEach(el => el.classList.add('reveal-on-scroll'));
+
+            if (!('IntersectionObserver' in window)) {
+                targets.forEach(el => el.classList.add('is-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            targets.forEach(el => observer.observe(el));
+        }
+
         function toggleInfo(id) {
             document.querySelectorAll('.answer-box').forEach(box => box.style.display = 'none');
             const selected = document.getElementById(id);
@@ -221,7 +258,10 @@
             selected.classList.remove('animate__fadeIn');
             void selected.offsetWidth;
             selected.classList.add('animate__animated', 'animate__fadeIn');
+            selected.classList.add('is-visible');
         }
+
+        document.addEventListener('DOMContentLoaded', setupIndexAnimations);
     </script>
 </body>
 </html>
