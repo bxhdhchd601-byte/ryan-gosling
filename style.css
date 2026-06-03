@@ -6,10 +6,68 @@
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
 }
 
-body { 
-    background: #f4f7f6; 
-    color: #333; 
+html {
+    min-height: 100%;
+    background: #070a10;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #0f1217;
+    background-image:
+        radial-gradient(circle at 10% 15%, rgba(255,255,255,0.16), transparent 18%),
+        radial-gradient(circle at 22% 40%, rgba(255,255,255,0.08), transparent 10%),
+        radial-gradient(circle at 45% 25%, rgba(255,255,255,0.12), transparent 12%),
+        radial-gradient(circle at 72% 12%, rgba(255,255,255,0.1), transparent 10%),
+        radial-gradient(circle at 80% 75%, rgba(255,255,255,0.06), transparent 12%),
+        radial-gradient(circle at 35% 82%, rgba(255,255,255,0.05), transparent 14%),
+        linear-gradient(180deg, #070a10 0%, #0f1217 100%);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #e2e8f0;
     line-height: 1.6;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.9) 0.8px, transparent 0),
+                      radial-gradient(circle, rgba(255,255,255,0.65) 0.8px, transparent 0);
+    background-size: 35px 35px, 90px 90px;
+    opacity: 0.24;
+    pointer-events: none;
+    animation: driftStars 90s linear infinite;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        radial-gradient(circle at 10% 18%, rgba(255,255,255,0.45) 2px, transparent 0),
+        radial-gradient(circle at 60% 16%, rgba(255,255,255,0.35) 1.8px, transparent 0),
+        radial-gradient(circle at 82% 65%, rgba(255,255,255,0.26) 1.2px, transparent 0),
+        radial-gradient(circle at 47% 78%, rgba(255,255,255,0.18) 1px, transparent 0),
+        radial-gradient(circle at 32% 50%, rgba(255,255,255,0.08) 0.8px, transparent 0);
+    opacity: 0.22;
+    pointer-events: none;
+    animation: twinkle 10s ease-in-out infinite alternate;
+}
+
+@keyframes driftStars {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-120px, 120px); }
+}
+
+@keyframes twinkle {
+    from { opacity: 0.12; }
+    to { opacity: 0.22; }
 }
 
 .container { 
@@ -159,7 +217,6 @@ body {
 
 .feature-card i { font-size: 2.2rem; color: #00a8a8; transition: 0.3s; }
 .feature-card:hover i { transform: scale(1.1); }
-
 /* ТЕЛО КАРТОЧКИ - ЗАБИРАЕТ СВОБОДНОЕ МЕСТО */
 .card-body {
     flex-grow: 1; 
@@ -280,7 +337,6 @@ body {
 .prof-content { padding: 25px; }
 
 .footer { background: #2c3e50; color: white; padding: 50px 0; text-align: center; margin-top: 80px; }
-
 /* МОБИЛКА */
 @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -407,7 +463,6 @@ body {
     --bg-light: #f4f9f9;
     --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 /* Общий контейнер для кнопок */
 .filter-tabs-wrapper, .tabs-tags {
     display: flex;
@@ -563,7 +618,6 @@ h2.section-title {
     margin: 10px 0;
     font-weight: 800;
 }
-
 .results-grid p {
     color: #333333 !important; /* Насыщенный цвет для инфы об обучении */
     font-size: 1rem;

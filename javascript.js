@@ -385,13 +385,7 @@ const finalDatabase = [
     { id: 363, name: 'Эксперт по таможенному оформлению', univ: 'КРСУ им. Ельцина', budget: 125, price: 65000, type: 'vuz', cat: 'Граница', sphere: 'law', icon: 'fas fa-passport', special: true, time: '4 года', map: 'https://www.google.com/maps/search/КРСУ+Ельцина+Бишкек' },
     { id: 364, name: 'Администратор отеля', univ: 'Бишкекский гуманитарно-правовой колледж', budget: 60, price: 28000, type: 'college', cat: 'Отель', sphere: 'services', icon: 'fas fa-bell-concierge', time: '2 года', map: 'https://www.google.com/maps/search/БГПК+Бишкек' },
     { id: 365, name: 'Кадастровый инженер', univ: 'КГТУ (бывш. КГУСТА)', budget: 115, price: 60000, type: 'vuz', cat: 'Земля', sphere: 'construction', icon: 'fas fa-map-location-dot', time: '4 года', map: 'https://www.google.com/maps/search/КГУСТА+Бишкек' },
-    { id: 359, name: 'Специалист по кадрам (HR)', univ: 'КНУ / БГУ', budget: 110, price: 45000, type: 'vuz', cat: 'Офис', sphere: 'management', icon: 'fas fa-user-gear', time: '4 года', map: 'https://www.google.com/maps/search/КНУ+Баласагына+Бишкек' },
-    { id: 360, name: 'Мастер по ремонту гибридных авто', univ: 'Автодорожный колледж (КГТУ)', budget: 60, price: 38000, type: 'college', cat: 'Авто', sphere: 'tech', icon: 'fas fa-car-battery', special: true, time: '2 года', map: 'https://www.google.com/maps/search/Автодорожный+колледж+Бишкек' },
-    { id: 361, name: 'Витражист-художник', univ: 'КГХУ им. Чуйкова (колледж)', budget: 60, price: 24000, type: 'college', cat: 'Стекло', sphere: 'art', icon: 'fas fa-window-restore', time: '2 года', map: 'https://www.google.com/maps/search/КГХУ+Чуйкова+Бишкек' },
-    { id: 362, name: 'Кинооператор', univ: 'КТУ Манас / БГУ', budget: 130, price: 45000, type: 'vuz', cat: 'Кино', sphere: 'art', icon: 'fas fa-video', special: true, time: '4 года', map: 'https://www.google.com/maps/search/КТУ+Манас+Бишкек' },
-    { id: 363, name: 'Эксперт по таможенному оформлению', univ: 'КРСУ им. Ельцина', budget: 125, price: 65000, type: 'vuz', cat: 'Граница', sphere: 'law', icon: 'fas fa-passport', special: true, time: '4 года', map: 'https://www.google.com/maps/search/КРСУ+Ельцина+Бишкек' },
-    { id: 364, name: 'Администратор отеля', univ: 'Бишкекский гуманитарно-правовой колледж', budget: 60, price: 28000, type: 'college', cat: 'Отель', sphere: 'services', icon: 'fas fa-bell-concierge', time: '2 года', map: 'https://www.google.com/maps/search/БГПК+Бишкек' },
-    { id: 365, name: 'Кадастровый инженер', univ: 'КГТУ (бывш. КГУСТА)', budget: 115, price: 60000, type: 'vuz', cat: 'Земля', sphere: 'construction', icon: 'fas fa-map-location-dot', time: '4 года', map: 'https://www.google.com/maps/search/КГУСТА+Бишкек' },
+  
     { id: 366, name: 'Реставратор живописи', univ: 'КГХУ им. Чуйкова (колледж)', budget: 60, price: 24000, type: 'college', cat: 'Музей', sphere: 'art', icon: 'fas fa-palette', time: '2 года', map: 'https://www.google.com/maps/search/КГХУ+Чуйкова+Бишкек' },
     { id: 367, name: 'Звукорежиссёр', univ: 'КНК им. Молдобасанова', budget: 120, price: 45000, type: 'vuz', cat: 'Звук', sphere: 'art', icon: 'fas fa-sliders', special: true, time: '4 года', map: 'https://www.google.com/maps/search/Консерватория+Бишкек' },
     { id: 368, name: 'Мастер по ремонту холодильников', univ: 'Лицей №20', budget: 0, price: 0, type: 'vocational_school', cat: 'Ремонт', sphere: 'tech', icon: 'fas fa-snowflake', time: '10 мес', map: 'https://www.google.com/maps/search/Профессиональный+лицей+20+Бишкек' },
@@ -507,6 +501,7 @@ const finalDatabase = [
     { id: 478, name: 'Мастер по ремонту швейных машин', univ: 'Лицей №92', budget: 0, price: 0, type: 'vocational_school', cat: 'Ремонт', sphere: 'tech', icon: 'fas fa-gears', time: '10 мес', map: 'https://www.google.com/maps/search/Профессиональный+лицей+92+Бишкек' },
     { id: 479, name: 'Педагог-психолог начальных классов', univ: 'КГПУ им. Арабаева', budget: 100, price: 38000, type: 'vuz', cat: 'Дети', sphere: 'humanities', icon: 'fas fa-chalkboard-user', time: '4 года', map: 'https://www.google.com/maps/search/КГПУ+Арабаева+Бишкек' },
     { id: 480, name: 'Дизайнер текстильных изделий', univ: 'КГХУ им. Чуйкова (колледж)', budget: 60, price: 26000, type: 'college', cat: 'Ткани', sphere: 'art', icon: 'fas fa-shirt', time: '2 года', map: 'https://www.google.com/maps/search/КГХУ+Чуйкова+Бишкек' },
+   
     { id: 486, name: 'Бухгалтер-аудитор', univ: 'КЭУ им. Рыскулбекова', budget: 110, price: 45000, type: 'vuz', cat: 'Финансы', sphere: 'economy', icon: 'fas fa-calculator', time: '4 года', map: 'https://www.google.com/maps/search/КЭУ+Тоголок+Молдо+Бишкек' },
     { id: 487, name: 'Учитель начальных классов', univ: 'КГПУ им. Арабаева', budget: 100, price: 35000, type: 'vuz', cat: 'Школа', sphere: 'humanities', icon: 'fas fa-chalkboard', time: '4 года', map: 'https://www.google.com/maps/search/КГПУ+Арабаева+Бишкек' },
     { id: 488, name: 'Программист (Software Development)', univ: 'КГТУ им. Раззакова', budget: 125, price: 60000, type: 'vuz', cat: 'IT', sphere: 'tech', icon: 'fas fa-code', special: true, time: '4 года', map: 'https://www.google.com/maps/search/КГТУ+Раззакова+Бишкек' },
@@ -725,4 +720,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.setupRevealAnimations();
 });
+function createGrokStar() {
+    const container = document.getElementById('grokStarsField');
+    if (!container) return;
+
+    const star = document.createElementNS("http://w3.org", "svg");
+    star.setAttribute("viewBox", "0 0 24 24");
+    star.classList.add("grok-star");
+
+    const colors = ['#ffffff', '#1abc9c'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    star.style.fill = randomColor;
+
+    star.innerHTML = `<path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>`;
+
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = `${Math.random() * 100}vh`;
+    
+    const size = Math.random() * 12 + 10;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+
+    star.style.filter = `drop-shadow(0 0 6px ${randomColor === '#ffffff' ? 'rgba(255,255,255,0.5)' : 'rgba(26,188,156,0.5)'})`;
+
+    container.appendChild(star);
+
+    setTimeout(() => { star.remove(); }, 2500);
+}
+
+setInterval(createGrokStar, 700);
 
